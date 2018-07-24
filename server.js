@@ -1,18 +1,18 @@
 const express = require('express')
-const fs = require('fs-extra')
+const pageRouter = require('./src/routes/pageRouter.js')
+const apiRouter = require('./src/routes/apiRouter.js')
 
 const app = express()
 const PORT = 3000
 
 
 
-app.use('/', (req, res)=>{
-  fs
-    .readFile(`${__dirname}/src/views/home.html`, 'utf-8')
-    .then( (htmlData) => {
-      res.send(htmlData)
-    })
+app.use('/api', apiRouter)
+app.use('/', pageRouter)
 
+
+app.use((req, res)=>{
+  res.send('<h3> 404 - big error - page no exist</h3>')
 })
 
 app.listen(PORT, ()=>{
