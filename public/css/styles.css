@@ -1,0 +1,54 @@
+*{
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.landing-splash{
+  display: flex;
+  min-height: 100vh;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  background-image: url('/images/landing-bg.jpg');
+  background-size: cover;
+  background-position: center center;
+
+}
+
+.landing-splash--about{
+  background: #1769aa;
+}
+
+.landing-splash .landing-splash__title {
+    font-weight: 100;
+    color: #fff;
+    font-size: 8vw;
+    letter-spacing: 1vw;
+     width: 100%;
+     text-align: center;
+    margin: 0;
+    background: #AAA;
+    padding-top: 10px;
+
+}
+
+.landing-splash__subtitle{
+  width: 100%;
+  color: #ccc;
+  text-align: center;
+  margin: 0;
+  background: #333;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
