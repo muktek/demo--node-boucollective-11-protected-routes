@@ -11,9 +11,11 @@ const apiRouter = require('./src/routes/apiRouter.js')
 
 const app = express()
 
+/* Data Access Config */
 const appDb = knex(dbConfigObj.development)
 app.locals.db = appDb
 
+// // Test to see that data access works
 // appDb.select('*').from('vendors')
 //   .then((records)=>{
 //     console.log(records)
@@ -22,11 +24,8 @@ app.locals.db = appDb
 
 const PORT = 3000
 
-// STEP - B.1
 app.use( express.static( `${__dirname}/public` ) )
 
-// STEP A.2 - Configure EJS as the application
-//          view engine
 app.engine( 'ejs', ejs.renderFile )
 app.set('view engine', 'ejs')
 app.set('views', `${__dirname}/src/views`)

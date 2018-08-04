@@ -1,4 +1,4 @@
-
+// DATA ACCESS - knex configuration //
 const devConfig = {
   client: 'pg',
   connection : {

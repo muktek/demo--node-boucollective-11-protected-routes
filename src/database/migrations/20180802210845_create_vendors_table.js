@@ -1,5 +1,10 @@
+// file created through
+//  `knex migrate:make «name-of-db-change»`
 
+
+// 'up' allows us to change the db schema to something new
 exports.up = function(knex, Promise) {
+
   return knex
     .schema
     .createTable('vendors', (vendorsTable)=>{
@@ -17,6 +22,7 @@ exports.up = function(knex, Promise) {
 
 };
 
+// 'down' allows us to reverse changes to db schema
 exports.down = function(knex, Promise) {
   return knex.schema.dropTableIfExists('vendors')
 };

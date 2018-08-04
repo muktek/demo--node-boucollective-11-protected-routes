@@ -10,7 +10,11 @@ apiRouter.get('/', (req, res)=>{
   })
 })
 
+// DATA ACCESS - multiple records from 'vendors' table //
 apiRouter.get('/vendors', (req, res)=>{
+
+  // We have access to the knex-db connection on the `req` object
+  //    from when we assigned it to app.locals.db in server.js
   const db = req.app.locals.db
   db.select('*').from('vendors')
     .then((records)=>{
@@ -18,8 +22,11 @@ apiRouter.get('/vendors', (req, res)=>{
     })
 })
 
+
+// DATA ACCESS - single record from 'vendors' table //
 apiRouter.get('/vendors/:_id', (req, res)=>{
   const db = req.app.locals.db
+
   const idInRoute = req.params._id
   console.log(idInRoute);
 
