@@ -1,7 +1,7 @@
 const vendorSeedData = [
-  { name: 'Peridot', premium_user: true, image_link: 'http://www.creativehunt.co/wp-content/uploads/2016/02/Church.png', year_established: 2014},
-  { name: 'St. John Knits', premium_user: false, image_link: 'http://www.creativehunt.co/wp-content/uploads/2016/02/Submarine.png', year_established: 2000 },
-  { name: 'Wild Bloom', premium_user: false, image_link: 'http://www.creativehunt.co/wp-content/uploads/2016/02/Tornado-Simple.png', year_established: 1983}
+  { id: 1, name: 'Peridot', premium_user: true, image_link: 'http://www.creativehunt.co/wp-content/uploads/2016/02/Church.png', year_established: 2014},
+  { id: 2, name: 'St. John Knits', premium_user: false, image_link: 'http://www.creativehunt.co/wp-content/uploads/2016/02/Submarine.png', year_established: 2000 },
+  { id: 3, name: 'Wild Bloom', premium_user: false, image_link: 'http://www.creativehunt.co/wp-content/uploads/2016/02/Tornado-Simple.png', year_established: 1983}
 ]
 
 

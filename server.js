@@ -3,7 +3,10 @@ const ejs = require('ejs')
 
 // Import knex
 const knex = require('knex')
-// Import knexfile.js config
+//import objection.Model
+const { Model } = require('objection')
+
+
 const dbConfigObj = require('./knexfile.js')
 
 const pageRouter = require('./src/routes/pageRouter.js')
@@ -12,15 +15,12 @@ const apiRouter = require('./src/routes/apiRouter.js')
 
 const app = express()
 
-/* Data Access Config */
 const appDb = knex(dbConfigObj.development)
+/* configure our database w/ objection model*/
+Model.knex(appDb)
+
 app.locals.db = appDb
 
-// // Test to see that data access works
-// appDb.select('*').from('vendors')
-//   .then((records)=>{
-//     console.log(records)
-//   })
 
 
 const PORT = 3000

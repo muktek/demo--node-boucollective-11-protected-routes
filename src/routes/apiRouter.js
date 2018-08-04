@@ -1,6 +1,10 @@
 const Router = require('express').Router
+const Vendor = require('../models/Vendor.js')
+const Product = require('../models/Product.js')
 
 const apiRouter  = Router()
+
+
 
 
 apiRouter.get('/', (req, res)=>{
@@ -13,13 +17,12 @@ apiRouter.get('/', (req, res)=>{
 // DATA ACCESS - multiple records from 'vendors' table //
 apiRouter.get('/vendors', (req, res)=>{
 
-  // We have access to the knex-db connection on the `req` object
-  //    from when we assigned it to app.locals.db in server.js
-  const db = req.app.locals.db
-  db.select('*').from('vendors')
-    .then((dbRecordsReturned)=>{
-      res.status(200).json(dbRecordsReturned)
+  Vendor.query()
+    .eager('products')
+    .then((recordsWithProducts)=>{
+      res.status(200).json(recordsWithProducts)
     })
+
 })
 
 
@@ -39,6 +42,14 @@ apiRouter.get('/vendors/:_id', (req, res)=>{
 })
 
 
+apiRouter.get('/products', (req, res)=>{
+  Product.query()
+    .eager('vendor')
+    .then((recordsWithCompanies)=>{
+      res.status(200).json(recordsWithCompanies)
+    })
+
+})
 
 apiRouter.get('/messages', (req, res)=>{
   res.json([
