@@ -5,6 +5,7 @@ const devConfig = {
     host: '127.0.0.1',
     port: '5432',
     user: 'dba_boucollective',
+    password: 'passpass',
     database : 'boucollective'
   },
 
@@ -17,6 +18,7 @@ const devConfig = {
   }
 
 }
+
 
 module.exports = {
   development: devConfig

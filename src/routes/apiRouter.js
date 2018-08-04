@@ -17,8 +17,8 @@ apiRouter.get('/vendors', (req, res)=>{
   //    from when we assigned it to app.locals.db in server.js
   const db = req.app.locals.db
   db.select('*').from('vendors')
-    .then((records)=>{
-      res.json(records)
+    .then((dbRecordsReturned)=>{
+      res.status(200).json(dbRecordsReturned)
     })
 })
 
@@ -31,10 +31,11 @@ apiRouter.get('/vendors/:_id', (req, res)=>{
   console.log(idInRoute);
 
   db.select('*').from('vendors')
-    .where('id', idInRoute)
+    .where('id', '=', idInRoute)
     .then((records)=>{
       res.json(records[0])
     })
+
 })
 
 

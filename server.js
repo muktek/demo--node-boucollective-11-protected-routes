@@ -1,8 +1,9 @@
 const express = require('express')
-//STEP A.1 - Import EJS (view templating engine)
 const ejs = require('ejs')
-const knex = require('knex')
 
+// Import knex
+const knex = require('knex')
+// Import knexfile.js config
 const dbConfigObj = require('./knexfile.js')
 
 const pageRouter = require('./src/routes/pageRouter.js')
