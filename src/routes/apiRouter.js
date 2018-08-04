@@ -10,13 +10,27 @@ apiRouter.get('/', (req, res)=>{
   })
 })
 
-apiRouter.get('/users', (req, res)=>{
-  res.json([
-    {id: 1, name: 'Steffi', age: 25},
-    {id: 2, name: 'Adrian', age: 28},
-    {id: 3, name: 'Bertha', age: 77}
-  ])
+apiRouter.get('/vendors', (req, res)=>{
+  const db = req.app.locals.db
+  db.select('*').from('vendors')
+    .then((records)=>{
+      res.json(records)
+    })
 })
+
+apiRouter.get('/vendors/:_id', (req, res)=>{
+  const db = req.app.locals.db
+  const idInRoute = req.params._id
+  console.log(idInRoute);
+
+  db.select('*').from('vendors')
+    .where('id', idInRoute)
+    .then((records)=>{
+      res.json(records[0])
+    })
+})
+
+
 
 apiRouter.get('/messages', (req, res)=>{
   res.json([

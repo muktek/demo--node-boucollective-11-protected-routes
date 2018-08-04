@@ -1,14 +1,25 @@
 const express = require('express')
 //STEP A.1 - Import EJS (view templating engine)
 const ejs = require('ejs')
+const knex = require('knex')
 
-
+const dbConfigObj = require('./knexfile.js')
 
 const pageRouter = require('./src/routes/pageRouter.js')
 const apiRouter = require('./src/routes/apiRouter.js')
 
 
 const app = express()
+
+const appDb = knex(dbConfigObj.development)
+app.locals.db = appDb
+
+// appDb.select('*').from('vendors')
+//   .then((records)=>{
+//     console.log(records)
+//   })
+
+
 const PORT = 3000
 
 // STEP - B.1
