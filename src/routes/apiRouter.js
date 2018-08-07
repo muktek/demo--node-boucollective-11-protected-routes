@@ -4,7 +4,7 @@ const Product = require('../models/Product.js')
 
 const apiRouter  = Router()
 
-
+// ** B.2 Model Queries **
 
 const showRouteListing = (req, res)=>{
   res.json({
@@ -58,6 +58,11 @@ const fetchOneProduct = async (req, res)=>{
 }
 
 const createOneProduct = function(req, res){
+  // ** A.3 + B.3 req.body **
+  //       body parser + express puts incoming
+  //       ContentType application/json
+  //       data on req.body
+  
   console.log(req.body)
   Product
     .query()
@@ -87,7 +92,8 @@ const deleteOneProduct = (req, res)=>{
 
 apiRouter.get('/', showRouteListing)
 
-// DATA ACCESS - multiple records from 'vendors' table //
+
+// ** B.1 REST ROUTES **
 apiRouter
   .get('/vendors', fetchManyVendors)
   .get('/vendors/:_id', fetchOneVendor)
