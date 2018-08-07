@@ -6,28 +6,28 @@ const apiRouter  = Router()
 
 
 
-
-apiRouter.get('/', (req, res)=>{
+const showRouteListing = (req, res)=>{
   res.json({
     '/api/users' : 'Show users',
     '/api/messages' : 'Show messages'
   })
-})
+}
 
-// DATA ACCESS - multiple records from 'vendors' table //
-apiRouter.get('/vendors', (req, res)=>{
-
+const fetchManyVendors = (req, res)=>{
   Vendor.query()
     .eager('products')
     .then((recordsWithProducts)=>{
       res.status(200).json(recordsWithProducts)
     })
+    .catch((err)=>{
+      console.log("ooppps!");
+      var errorMessage = err.toString()
+      res.status(500).send(errorMessage)
+    })
 
-})
+}
 
-
-// DATA ACCESS - single record from 'vendors' table //
-apiRouter.get('/vendors/:_id', (req, res)=>{
+const fetchOneVendor = (req, res)=>{
   const db = req.app.locals.db
 
   const idInRoute = req.params._id
@@ -39,24 +39,66 @@ apiRouter.get('/vendors/:_id', (req, res)=>{
       res.json(records[0])
     })
 
-})
+}
 
+const fetchManyProducts = async function(req, res){
+  try {
+    const recordsWithCompanies = await Product.query()
+      .eager('vendor')
+    res.status(200).json(recordsWithCompanies)
 
-apiRouter.get('/products', (req, res)=>{
-  Product.query()
-    .eager('vendor')
-    .then((recordsWithCompanies)=>{
-      res.status(200).json(recordsWithCompanies)
+  } catch (err){
+    var errorMessage = err.toString()
+    res.status(500).send(errorMessage)
+  }
+}
+
+const fetchOneProduct = async (req, res)=>{
+
+}
+
+const createOneProduct = function(req, res){
+  console.log(req.body)
+  Product
+    .query()
+    .insert(req.body)
+    .then((newRecord)=>{
+      res.status(200).json(newRecord)
     })
+}
 
-})
+const editOneProduct = (req, res)=>{
+  Product
+   .query()
+   .updateAndFetchById( req.params._id , req.body )
+   .then((updatedRecord)=>{
+     res.status(200).json(updatedRecord)
+   })
+}
 
-apiRouter.get('/messages', (req, res)=>{
-  res.json([
-    { id: 1, user_id: 2, body: 'Hey Bertha!'},
-    { id: 2, user_id: 3, body: 'Hey Steffi!'},
-    { id: 3, user_id: 2, body: 'Good to see you'}
-  ])
-})
+const deleteOneProduct = (req, res)=>{
+  Product.query()
+    .deleteById(req.params._id)
+    .then((dbResponse)=>{
+      res.status(200).json(dbResponse)
+    })
+}
+
+
+apiRouter.get('/', showRouteListing)
+
+// DATA ACCESS - multiple records from 'vendors' table //
+apiRouter
+  .get('/vendors', fetchManyVendors)
+  .get('/vendors/:_id', fetchOneVendor)
+
+
+apiRouter
+  .get('/products', fetchManyProducts)
+  .get('/products/:_id', fetchOneProduct)
+  .post('/products', createOneProduct)
+  .put('/products/:_id', editOneProduct )
+  .delete('/products/:_id', deleteOneProduct)
+
 
 module.exports = apiRouter

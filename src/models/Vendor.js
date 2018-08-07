@@ -16,7 +16,7 @@ class Vendor extends Model {
         join : {
           from : 'vendors.id',
           to: 'products.vendor_id'
-        }
+        },
       }
     }
   }

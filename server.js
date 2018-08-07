@@ -1,7 +1,7 @@
 const express = require('express')
 const ejs = require('ejs')
+const bodyParser = require('body-parser')
 
-// Import knex
 const knex = require('knex')
 //import objection.Model
 const { Model } = require('objection')
@@ -14,16 +14,16 @@ const apiRouter = require('./src/routes/apiRouter.js')
 
 
 const app = express()
+const PORT = 3000
 
 const appDb = knex(dbConfigObj.development)
 /* configure our database w/ objection model*/
 Model.knex(appDb)
-
 app.locals.db = appDb
 
+app.use( bodyParser.urlencoded({extended: false}) )
+app.use( bodyParser.json() )
 
-
-const PORT = 3000
 
 app.use( express.static( `${__dirname}/public` ) )
 
