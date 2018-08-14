@@ -1,15 +1,15 @@
-# Data Access Notes
+# Auth Notes
 
 ### Pre-Configuration
-
-
++ install yeoman
++ install generator-nxko
++ generate files/folders with nxko 
++ run knex migration for create_user_table
 
 ### Relevant files/folders
 
-+ `server.js` :
-  - import + configure body-parser library. body-parser allows our application to READ incoming json data
-
-
-+ `/src/routes/apiRouter.js`
-  - declare RESTful routes
-  - use our models to make Create, Read, Update, Delete queries
++ `server.js` : import + configure:
+  + cookie-parser
+  + cookie-session
+  + passport.js
+  + authRouter
