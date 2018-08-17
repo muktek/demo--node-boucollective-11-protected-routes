@@ -8,7 +8,6 @@ exports.handleRegisterRes = function(req, res){
     return res.status(403).json(req.locals.newUser)
   }
 
-  console.log(newUser);
   delete newUser.password
   return res.status(200).json(newUser)
 }

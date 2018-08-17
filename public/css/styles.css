@@ -1,3 +1,15 @@
+
+/*
+light-gray 7B8488, 123.132.136
+dark-gray 3F494F, 63.73.79
+
+red FF6B4F, 255.107.79
+yellow FAF273 250.242.115
+blue 6DBDB3 109.189.179
+dark-blue 2D4E4A
+dark-red 632A1F
+*/
+
 *{
   box-sizing: border-box;
 }
@@ -10,6 +22,11 @@ img {
 body {
   margin: 0;
   font-family: sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #6DBDB3;
 }
 
 .landing-splash{
@@ -38,7 +55,7 @@ body {
      width: 100%;
      text-align: center;
     margin: 0;
-    background: #AAA;
+    background: #7B8488;
     padding-top: 10px;
 
 }
@@ -48,7 +65,139 @@ body {
   color: #ccc;
   text-align: center;
   margin: 0;
-  background: #333;
+  background: #3F494F;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.page404{
+  display: flex;
+  flex-wrap: wrap;
+  background: #3F494F;
+  min-height: 100vh;
+  color: #fff;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+}
+
+.page404__title{
+  width: 100%;
+  font-size: 10vw;
+  margin: 0;
+  color: #632A1F;
+  text-shadow: 1px 1px 0px #FF6B4F;
+}
+
+.page404__subtitle{
+  width: 100%;
+  font-size: 1.25rem;
+  margin: 0;
+  font-weight: 100;
+}
+.page404__text{
+  width: 100%;
+  font-size: .75rem;
+}
+.page404__btn{
+  border: 1px solid #6DBDB3;
+  padding: .75rem 2rem;
+  font-size: 1rem;
+  color: #fff;
+  margin: 30px auto;
+
+}
+
+.page404__btnbox{
+  margin: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.page404__btn-listings,
+.page404__btn-home{
+  border: 1px solid #6DBDB3;
+  padding: .75rem 2rem;
+  font-size: 1rem;
+  color: #6DBDB3;
+  margin: .5rem;
+  border-radius: 20px;
+}
+.page404__btn-listings{
+  border: 1px solid #FAF273;
+  color: #FAF273;
+
+}
+
+
+.shops-multi-page__header{
+  background: #FF6B4F;
+  border-bottom: 4px solid #6DBDB3;
+  display: flex;
+  color: #FAF273;
+  text-shadow: .3rem .3rem 1px #6DBDB3;
+  font-size: 3rem;
+  text-align: center;
+  justify-content: center;
+}
+
+.shops-multi-page__body{
+  margin: 0 auto;
+  max-width: 800px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.shop-card{
+  margin: 1rem;
+  width: 270px;
+  text-align: center;
+  border: 1px solid #333;
+  padding: .5rem .5rem;
+  opacity: .7;
+
+}
+
+.shop-card__name{
+  font-size: 2rem;
+  margin: 1rem 0 0 0;
+  color: #333;
+}
+
+
+
+.listings-multi-page__header{
+  background: #FAF273;
+  border-bottom: 4px solid #FF6B4F;
+  display: flex;
+  color: #6DBDB3;
+  text-shadow: .3rem .3rem 1px #FF6B4F;
+  font-size: 3rem;
+  text-align: center;
+  justify-content: center;
+}
+
+.listings-multi-page__body{
+  margin: 0 auto;
+  max-width: 800px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.listing-card{
+  width: 150px;
+  margin: .33rem;
+  border: 1px solid #999;
+  padding: .5rem;
+}
+
+.listing-card__name{
+  font-weight: 200;
+  margin-bottom: .25rem;;
+}
+
+.listing-card__price{
+  margin: 0;
 }
