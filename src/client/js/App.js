@@ -6,6 +6,7 @@ import NoMatch404 from './components/NoMatch404.js'
 import ListingsMulti from './components/ListingsMulti.js'
 import ShopsMulti from './components/ShopsMulti.js'
 
+// PART 2 - Import components + configure to router
 
 class App extends React.Component {
   render (){
