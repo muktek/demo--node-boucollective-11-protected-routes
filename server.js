@@ -23,10 +23,15 @@ const apiRouter = require('./src/routers/apiRouter.js')
 
 const authRouter = require('./src/routers/authRouter')
 
+
 const app = express()
 const PORT = 3000
 
 
+if(typeof process.env.NODE_ENV === 'undefined'){
+  console.log("YOU MUST DEFINE THE NODE_ENV!!!")
+  process.exit()
+}
 
 app.use( cookieParser() )
 app.use( cookieSession({
@@ -44,7 +49,7 @@ passport.use(registerLocalStrategy())
 passport.serializeUser(configSerializeUser())
 passport.deserializeUser(configDeserializeUser())
 
-const appDb = knex(dbConfigObj.development)
+const appDb = knex( dbConfigObj[process.env.NODE_ENV] )
 Model.knex(appDb)
 app.locals.db = appDb
 

@@ -201,3 +201,18 @@ a {
 .listing-card__price{
   margin: 0;
 }
+
+.nav{
+  background: #3F494F;
+  color: #fff;
+  padding: 1.25rem;
+  font-size: 3vw;
+}
+
+.nav small{
+  font-size: 1.8vw;
+  position: relative;
+  left: -1vw;
+  top: -1vw;
+  color: #FAF273;
+}

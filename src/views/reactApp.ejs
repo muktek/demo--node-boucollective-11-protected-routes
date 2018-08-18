@@ -15,9 +15,12 @@
        will link to /js/bundle.js in 'development'
         OR  /js/bundle.min.js in 'production'
 
-        NOTE: to create production bundle: npm run build BEFORE deploy   
+        NOTE: to create production bundle: npm run build BEFORE deploy
      -->
-    <% var envFilename = process.env.NODE_ENV === 'production' ? 'bundle.min.js' : 'bundle.js' %>
-    <script src="/js/<%=envFilename%>"></script>
+    <% var envFilename = process.env.NODE_ENV === 'production' ?
+        'bundle.min.js' :
+        'bundle.js'
+     %>
+    <script src="/js/<%= envFilename %>"></script>
   </body>
 </html>

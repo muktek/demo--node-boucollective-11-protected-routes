@@ -10,7 +10,11 @@ import ShopsMulti from './components/ShopsMulti.js'
 
 class App extends React.Component {
   render (){
+
     return <div>
+      <nav className="nav">
+        B.<small>C</small>
+      </nav>
       <Switch>
         <Route path='/shops' component={ShopsMulti}/>
         <Route path='/listings' component={ListingsMulti}/>
