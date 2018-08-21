@@ -216,3 +216,101 @@ a {
   top: -1vw;
   color: #FAF273;
 }
+
+.nav__link--selected{
+  color: #ddd;
+  border-bottom: 2px solid;
+
+}
+.nav__link--logout{
+  color: #FF6B4F;
+  border: 1px solid #FF6B4F;
+  font-size: .75rem;
+  padding: .5rem 1rem;
+  margin-left: 2rem;
+}
+
+.nav__link{
+  font-size: 1rem;
+  padding: .5rem;
+  color: #ddd;
+  margin-left: .5rem;
+}
+
+.form{
+  max-width: 750px;
+  margin: 0 auto;
+  background: #fff;
+  padding-top: 3rem;
+}
+
+.form__field{
+  padding: .75rem;
+  font-size: 1.25rem;
+  display: block;
+  margin: 1rem;
+  width : 80%;
+  max-width: 500px;
+}
+
+.form__register-btn{
+  padding: .5rem 1rem;
+  background: #2D4E4A;
+  color: #fff;
+  border: 0;
+  font-size: 1rem;
+  margin: 1rem;
+  cursor: pointer;
+}
+
+.form__login-btn{
+  padding: .5rem 1rem;
+  background: #6DBDB3;
+  color: #fff;
+  border: 0;
+  font-size: 1rem;
+  margin: 1rem;
+  cursor: pointer;
+}
+
+.form__title{
+  font-size: 1.75rem;
+  font-weight: 400;
+}
+
+.dashboard{
+  background: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin : auto;
+  border: 5px solid #ddd;
+  padding : 1rem;
+}
+.dashboard__header{
+  text-align: left;
+  margin: 0;
+  font-weight: 400;
+}
+
+.dashboard__user .acct{
+  color: #7B8488;
+  font-weight: 400;
+  font-size: 1rem;
+}
+.dashboard__user{
+  margin: 0;
+  color: #6DBDB3;
+  text-align: right;
+  margin-bottom: 1rem;
+}
+
+.dashboard > * {
+  width: 100%;
+}
+
+.dashboard .dashboard__demo-img {
+  max-width: 400px;
+  margin : 0 auto;
+  opacity: .1;
+}
