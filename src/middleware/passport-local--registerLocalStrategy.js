@@ -22,7 +22,8 @@ async function  localStrategyHandler(inputEmail, inputPassword, doneCb) {
     if(!isValidPassword){ return doneCb(null, false, `incorrect user password`) }
 
     delete user.password
-    return doneCb(null, user)
+    console.log(user);
+    return doneCb( null, user || {} )
 
   } catch (err) {
     doneCb(err)

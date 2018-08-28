@@ -7,21 +7,21 @@ import request from 'superagent'
 class NavBar extends React.Component {
 
   _renderSignupBtn(theAppState){
-    if(typeof theAppState.currentUser.id === 'undefined'){
+    if(typeof theAppState.currentUser.email === 'undefined'){
       return <NavLink
-          activeClassName="nav__link--selected"
-          className="nav__link"
-          to={`/signup`}
-          >
-            Sign Up
-          </NavLink>
+        activeClassName="nav__link--selected"
+        className="nav__link"
+        to={`/signup`}
+        >
+          Sign Up
+        </NavLink>
     } else {
       return ''
     }
   }
 
   _renderLoginBtn(theAppState){
-    if(typeof theAppState.currentUser.id === 'undefined'){
+    if(typeof theAppState.currentUser.email === 'undefined' ){
       return <NavLink
         activeClassName="nav__link--selected"
         className="nav__link"
@@ -55,7 +55,7 @@ class NavBar extends React.Component {
 
       return <span
        className="nav__link--logout"
-       onClick={ () =>{ this._handleLogout() }}
+         onClick={ () =>{ this._handleLogout() }}
        >
         Log Out
       </span>
@@ -72,18 +72,14 @@ _handleLogout(){
       component.props.setAppState({
         currentUser: {}
       })
+
       this.props.history.push('/login')
 
     })
 }
 
 
-
-
-
-
   render(){
-    console.log(this.props);
     return <nav className="nav">
       <span>B.<small>C</small></span>
       <NavLink

@@ -39,8 +39,8 @@ export default class RegisterForm  extends React.Component {
 
    _handleResgisterClick(evt){
       evt.preventDefault()
+
       const theFormEl = evt.target
-      console.log(theFormEl.email)
       const emailInput = theFormEl.email.value
       const pwInput = theFormEl.password.value
       const confirmPwInput = theFormEl.confirmpassword.value
@@ -58,9 +58,11 @@ export default class RegisterForm  extends React.Component {
               message : `Please login, ${user.email}`,
               level : 'success'
             })
-              setTimeout(()=>{
-                this.props.history.push('/login')
-            }, 3000)
+
+            setTimeout(()=>{
+              this.props.history.push('/login')
+           }, 3000)
+
           })
           .catch((err)=>{
             this.refs.notificationSystem.addNotification({
@@ -74,17 +76,15 @@ export default class RegisterForm  extends React.Component {
     }
 
 
-
-
-
   render(){
+    const component = this
     return   <div className="form form--register">
-      <form onSubmit={ (evt)=>{ this._handleResgisterClick(evt) } }>
+      <form onSubmit={ (evt)=>{ component._handleResgisterClick(evt) } }>
         <h2 className="form__title">Register</h2>
         <input ref="emailinput" className="form__field" type="text" name="email" placeholder="Email"/>
         <input className="form__field" type="password" name="password" placeholder="Password"/>
         <input className="form__field" type="password" name="confirmpassword" placeholder="Confirm Password"/>
-        <input className="form__register-btn"type="submit" value="register"/>
+        <input className="form__register-btn" type="submit" value="register"/>
       </form>
 
       <NotificationSystem ref="notificationSystem"/>

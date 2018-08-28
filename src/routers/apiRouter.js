@@ -1,6 +1,11 @@
 const Router = require('express').Router
 const Vendor = require('../models/Vendor.js')
+const User = require('../models/User.js')
+
 const Product = require('../models/Product.js')
+
+const requireAuthentication = require('../middleware/requireAuthentication.js')
+const restrictToCurrentUser = require('../middleware/restrictToCurrentUser.js')
 
 const apiRouter  = Router()
 
@@ -54,6 +59,12 @@ const fetchManyProducts = async function(req, res){
 }
 
 const fetchOneProduct = async (req, res)=>{
+  Product
+    .query()
+    .findById(req.params._id)
+    .then((fetchedRecord)=>{
+      res.status(200).json(fetchedRecord)
+    })
 
 }
 
@@ -62,7 +73,7 @@ const createOneProduct = function(req, res){
   //       body parser + express puts incoming
   //       ContentType application/json
   //       data on req.body
-  
+
   console.log(req.body)
   Product
     .query()
@@ -90,6 +101,21 @@ const deleteOneProduct = (req, res)=>{
 }
 
 
+const fetchOneUser = (req, res) => {
+  User
+    .query()
+    .eager('vendor')
+    .findById(req.params._userId)
+    .then((fetchedRecord)=>{
+      if(typeof fetchedRecord === 'object') {
+        delete fetchedRecord.password
+      }
+      res.status(200).json(fetchedRecord)
+    })
+
+
+}
+
 apiRouter.get('/', showRouteListing)
 
 
@@ -101,10 +127,16 @@ apiRouter
 
 apiRouter
   .get('/products', fetchManyProducts)
-  .get('/products/:_id', fetchOneProduct)
-  .post('/products', createOneProduct)
-  .put('/products/:_id', editOneProduct )
-  .delete('/products/:_id', deleteOneProduct)
+  .get('/products/:_id',  fetchOneProduct)
+  .post('/products', requireAuthentication, createOneProduct)
+  .put('/products/:_id', requireAuthentication, editOneProduct )
+  .delete('/products/:_id', requireAuthentication, deleteOneProduct)
 
+apiRouter
+  .get('/users/:_userId',
+    requireAuthentication,
+    restrictToCurrentUser,
+    fetchOneUser
+  )
 
 module.exports = apiRouter

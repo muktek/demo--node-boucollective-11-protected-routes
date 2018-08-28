@@ -24,7 +24,7 @@ class App extends React.Component {
     super(...args)
     this.state = {
       currentUser : {}
-      // currentUser : {id: 8, email: 'coolguyme@mail.com'}
+      // currentUser : {id: 8, email: 'supersupersweet@mail.com'}
     }
   }
 
@@ -48,13 +48,13 @@ class App extends React.Component {
   }
 
   render (){
-    const appComponent = this
     const _setAppStateWithAppContext = this._setAppState.bind(this)
+
     return <div>
       <NavBarWithRouter
         {...this.props}
-        setAppState={_setAppStateWithAppContext}
         appState={this.state}
+        setAppState={_setAppStateWithAppContext}
       />
       <Switch>
         <Route path='/dashboard' component={(thePropsWithRouterInfo)=>{
@@ -64,7 +64,7 @@ class App extends React.Component {
                 />
         }}
         />
-        <Route path='/signup' component={RegisterForm}/>
+        <Route path='/signup' component={ ()=> { return <RegisterForm/> }  }/>
         <Route path='/login'
           component={ (thePropsWithRouterInfo) => {
               return <LoginForm

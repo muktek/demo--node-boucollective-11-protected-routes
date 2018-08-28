@@ -15,6 +15,21 @@ class User extends Password(Model) {
     return modelInstance
   }
 
+  static get relationMappings(){
+    const Vendor = require('./Vendor.js')
+
+    return {
+      vendor : {
+        relation: Model.HasOneRelation,
+        modelClass : Vendor,
+        join : {
+          from : 'users.id',
+          to : 'vendors.user_id'
+        }
+      }
+    }
+  }
+
 }
 
 

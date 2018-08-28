@@ -10,13 +10,13 @@ export default class LoginForm  extends React.Component {
     const formEl = evt.target
     const emailInput = formEl.email.value
     const pwInput = formEl.password.value
-
-
     const component = this
+
     request
       .post('/auth/login')
       .send({email: emailInput, password: pwInput})
       .then((serverRes)=>{
+          this // --> request
           component.props.setAppState({
             currentUser : serverRes.body
           })
@@ -33,8 +33,8 @@ export default class LoginForm  extends React.Component {
             level: 'error'
           })
       })
-
   }
+
   render(){
     console.log(this.props);
     return   <div className="form form--login">
