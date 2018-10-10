@@ -9,6 +9,7 @@ exports.up = function(knex, Promise) {
       // Add data columns
       productsTable.string('name').notNullable()
       productsTable.integer('price')
+      productsTable.string('image_link')
       productsTable.timestamps(true, true)
 
       return productsTable

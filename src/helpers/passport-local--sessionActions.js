@@ -13,8 +13,10 @@ exports.configDeserializeUser = function( config={} ) {
       .query()
       .findById(userId)
       .returning('*')
-      
+
     if(usr) delete usr.password
+
     done(null, usr || {})
+    // req.user = undefined
   }
 }
