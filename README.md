@@ -1,30 +1,29 @@
 # Auth Notes
 
 ### Pre-Configuration
-+ have yeoman installed globally
++ create user seed
+  - `knex seed:make 00-user`
 
-+ have generator-nxko installed globally
++ configure seed file to create hashed passwords
+  - `src/database/seeds/00-user.js`
 
-+ generate files/folders with nxko
-  ```
-  yo nxko:react
-  ```
++ create migration for foreign key on vendor table
+  - `src/database/migrations/20180827215439_put_user_id_fk_on_vendors_table.js`
 
-+ configure `package.json` scripts
-  ```json
-  "dev": "npm-run-all --parallel dev:server dev:webpack",
-  "dev:webpack": "NODE_ENV=development ./node_modules/.bin/webpack --watch",
-  "dev:server": "NODE_ENV=development nodemon server.js --watch src --watch server.js --ignore src/client"
-  ```
+
+
 
 ### Relevant files/folders
 
 + `server.js` : import + configure:
   + fallback route is
-```js
 
-  // React
-  app.use((req, res)=>{
-    res.render('reactApp.ejs')
-  })
-```
++ `src/middleware/requireAuthentication.js`
+  - verify authentication of user
+
++ `src/middleware/restrictToCurrentUser.js`
+  - middleware to limit authentication action to current user
+
++ `src/routers/apiRouter.js`
+  - middleware routes on `.post('/products', ...)`
+  - middleware routes on `.put('/products/:_id', ...)`

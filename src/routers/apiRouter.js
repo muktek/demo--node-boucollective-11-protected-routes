@@ -5,7 +5,7 @@ const User = require('../models/User.js')
 const Product = require('../models/Product.js')
 
 const requireAuthentication = require('../middleware/requireAuthentication.js')
-const restrictToCurrentUser = require('../middleware/restrictToCurrentUser.js')
+const restrictActionToCurrentUser = require('../middleware/restrictToCurrentUser.js')
 
 const apiRouter  = Router()
 
@@ -128,14 +128,15 @@ apiRouter
 apiRouter
   .get('/products', fetchManyProducts)
   .get('/products/:_id',  fetchOneProduct)
-  .post('/products', requireAuthentication, createOneProduct)
-  .put('/products/:_id', requireAuthentication, editOneProduct )
+  .post('/products', requireAuthentication,  createOneProduct)
+  .put('/products/:_id',
+    requireAuthentication,
+    restrictActionToCurrentUser,
+    editOneProduct )
   .delete('/products/:_id', requireAuthentication, deleteOneProduct)
 
 apiRouter
   .get('/users/:_userId',
-    requireAuthentication,
-    restrictToCurrentUser,
     fetchOneUser
   )
 
