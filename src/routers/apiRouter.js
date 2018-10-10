@@ -5,7 +5,7 @@ const User = require('../models/User.js')
 const Product = require('../models/Product.js')
 
 const requireAuthentication = require('../middleware/requireAuthentication.js')
-const restrictActionToCurrentUser = require('../middleware/restrictToCurrentUser.js')
+const restrictActionToCurrentUser = require('../middleware/restrictActionToCurrentUser.js')
 
 const apiRouter  = Router()
 
